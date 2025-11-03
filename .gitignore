@@ -100,4 +100,6 @@ fixalpha.exe
 # Krita files
 *.kra
 
-
+# CUSTOM
+example-pom.txt
+pom.xml
