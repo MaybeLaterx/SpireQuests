@@ -14,6 +14,7 @@ public class RagerQuest extends AbstractQuest {
         new TriggerTracker<>(QuestTriggers.PLAY_CARD, 5)
                 .triggerCondition((card) -> card.type == AbstractCard.CardType.ATTACK)
                 .setResetTrigger(QuestTriggers.TURN_START)
+                .setResetTrigger(QuestTriggers.VICTORY)
                 .add(this);
 
         addReward(new QuestReward.PotionReward(new AttackPotion()));
