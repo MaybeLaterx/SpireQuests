@@ -126,7 +126,7 @@ public class QuestUI {
 
             Settings.GOLD_COLOR.a = questAlpha;
             Settings.RED_TEXT_COLOR.a = questAlpha;
-            Color.GRAY.a = questAlpha;
+            Color.LIGHT_GRAY.a = questAlpha;
             Color.WHITE.a = questAlpha;
 
             for (int i = 0; i < quests.size(); ++i) {
@@ -148,7 +148,7 @@ public class QuestUI {
                     if (tracker.hidden()) continue;
 
                     yPos -= SMALL_SPACING;
-                    Color textColor = Color.GRAY;
+                    Color textColor = Color.LIGHT_GRAY;
                     if (hb.hovered) {
                         textColor = Color.WHITE;
                     }
@@ -171,7 +171,7 @@ public class QuestUI {
 
             Settings.GOLD_COLOR.a = 1;
             Settings.RED_TEXT_COLOR.a = 1;
-            Color.GRAY.a = 1;
+            Color.LIGHT_GRAY.a = 1;
             Color.WHITE.a = 1;
             largeFont.getData().setScale(1);
         }
