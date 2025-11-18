@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import spireQuests.patches.QuestTriggers;
 import spireQuests.quests.AbstractQuest;
 import spireQuests.quests.QuestReward;
+import spireQuests.quests.gk.cards.Smash;
 import spireQuests.quests.gk.cards.TripleCast;
 import spireQuests.util.Wiz;
 
@@ -24,7 +25,7 @@ public class BasicProficiencyQuest extends AbstractQuest {
     public static final Color TITLE_PURPLE = new Color(183/255f, 95/255f, 245/255f, 1);
     private static final Map<String, List<String>> CHAR_MAP = new HashMap<>();
     static {
-        CHAR_MAP.put("IRONCLAD", Arrays.asList(Bash.ID, ""));
+        CHAR_MAP.put("IRONCLAD", Arrays.asList(Bash.ID, Smash.ID));
         CHAR_MAP.put("THE_SILENT", Arrays.asList(Survivor.ID, ""));
         CHAR_MAP.put("DEFECT", Arrays.asList(Dualcast.ID, TripleCast.ID));
         CHAR_MAP.put("WATCHER", Arrays.asList(Vigilance.ID, ""));
