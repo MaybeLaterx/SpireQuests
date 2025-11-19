@@ -9,7 +9,7 @@ import com.evacipated.cardcrawl.mod.stslib.util.extraicons.ExtraIcons;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import spireQuests.Anniv8Mod;
 import spireQuests.quests.AbstractQuest;
@@ -22,10 +22,11 @@ import java.util.List;
 public class QuestboundMod extends AbstractCardModifier {
     public static String ID = Anniv8Mod.makeID(QuestboundMod.class.getSimpleName());
     public static UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+    private static final Texture tex = TexLoader.getTexture(Anniv8Mod.modID + "Resources/images/ui/questboundIcon.png");
+
     public transient AbstractQuest boundQuest;
     public String boundQuestID;
     public int boundQuestIndex;
-    private static final Texture tex = TexLoader.getTexture(Anniv8Mod.modID + "Resources/images/ui/questboundIcon.png");
 
     public QuestboundMod(AbstractQuest quest) {
         boundQuest = quest;
@@ -55,9 +56,8 @@ public class QuestboundMod extends AbstractCardModifier {
     }
 
     public List<TooltipInfo> additionalTooltips(AbstractCard card) {
-        String questName = "#y" + CardCrawlGame.languagePack.getUIString(boundQuestID).TEXT[0];
-        questName = questName.replace(" ", " #y");
-        return Collections.singletonList(new TooltipInfo(Anniv8Mod.keywords.get("Questbound").PROPER_NAME, String.format(uiStrings.TEXT[1],questName)));
+        String questName = FontHelper.colorString(CardCrawlGame.languagePack.getUIString(boundQuestID).TEXT[0], "y");
+        return Collections.singletonList(new TooltipInfo(Anniv8Mod.keywords.get("Questbound").PROPER_NAME, String.format(uiStrings.TEXT[1], questName)));
     }
 
     @Override
