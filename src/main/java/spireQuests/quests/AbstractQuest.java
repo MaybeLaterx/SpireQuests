@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.potions.AbstractPotion.PotionRarity;
 import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
@@ -178,6 +179,9 @@ public abstract class AbstractQuest implements Comparable<AbstractQuest> {
         for (QuestReward reward : questRewards) {
             reward.addTooltip(tipList);
         }
+        if(questboundRelics != null || questboundCards != null) {
+            tipList.add(new PowerTip(Anniv8Mod.keywords.get("Questbound").PROPER_NAME, Anniv8Mod.keywords.get("Questbound").DESCRIPTION));
+        }
     }
 
     /**
@@ -272,6 +276,9 @@ public abstract class AbstractQuest implements Comparable<AbstractQuest> {
         for (Tracker tracker : trackers) {
             if (!tracker.isComplete()) return false;
         }
+
+
+
         complete = true;
         trackers.clear();
         triggers.clear();
@@ -946,6 +953,13 @@ public abstract class AbstractQuest implements Comparable<AbstractQuest> {
         return null;
     }
 
+    // Similar to Questbound cards, but for Relics!
+    public ArrayList<AbstractRelic> questboundRelics;
+    // Setting removeQBDup to true will make it remove from pools when obtained.
+    // Setting returnQPRelics to true adds them to the pool again once the Quest is complete. (Ignored if the first boolean is set to false)
+
+    public boolean removeQuestboundDuplicate = true;
+    public boolean returnQuestboundRelics = true;
     @SpirePatch(clz = AbstractDungeon.class, method = "nextRoomTransition", paramtypez = {SaveFile.class})
     public static class AutoCompleteQuestLater {
         @SpireInsertPatch(locator = Locator.class)
