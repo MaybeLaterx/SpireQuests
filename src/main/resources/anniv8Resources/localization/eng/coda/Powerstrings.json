@@ -3,7 +3,7 @@
     "NAME": "Spirit Shield",
     "DESCRIPTIONS": [
       "Whenever you play a card, this enemy gains #b",
-      " block next turn."
+      " #yBlock next turn."
     ]
   }
 }
