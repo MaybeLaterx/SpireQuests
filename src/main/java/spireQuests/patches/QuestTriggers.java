@@ -27,7 +27,6 @@ import com.megacrit.cardcrawl.ui.panels.TopPanel;
 import javassist.CtBehavior;
 import spireQuests.Anniv8Mod;
 import spireQuests.quests.Trigger;
-import spireQuests.quests.maybelaterx.relics.BalancingStonesRelic;
 import spireQuests.quests.ramchops.patch.ShopMoneyTracker;
 
 public class QuestTriggers {
