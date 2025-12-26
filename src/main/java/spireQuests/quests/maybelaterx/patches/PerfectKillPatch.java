@@ -28,22 +28,8 @@ import java.util.stream.Collectors;
 @SpirePatch(
         clz = AbstractMonster.class,
         method = "damage"
-        //paramtypez = { DamageInfo.class }
 )
 public class PerfectKillPatch {
-    /*
-    @SpireInsertPatch(locator = BestiaryIntegrationPatch.Locator.class, localvars = {"arr"})
-    public static void AddMonsters(Object __instance, JsonArray arr) {
-        logger.info("Loading Bestiary entries for modded monsters");
-        for (String packageName : Anniv8Mod.questPackages) {
-            addPackageMonstersForLanguage(arr, packageName, "eng");
-            if (Settings.language != Settings.GameLanguage.ENG)
-            {
-                addPackageMonstersForLanguage(arr, packageName, Settings.language.toString().toLowerCase());
-            }
-        }
-    }
-     */
     @SpireInsertPatch(rloc = 77)
     public static void Insert(AbstractMonster __instance) {
         if (__instance.currentHealth == 0) {
