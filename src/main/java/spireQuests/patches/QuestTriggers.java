@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.map.MapRoomNode;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -26,6 +27,7 @@ import com.megacrit.cardcrawl.ui.panels.TopPanel;
 import javassist.CtBehavior;
 import spireQuests.Anniv8Mod;
 import spireQuests.quests.Trigger;
+import spireQuests.quests.maybelaterx.relics.BalancingStonesRelic;
 import spireQuests.quests.ramchops.patch.ShopMoneyTracker;
 
 public class QuestTriggers {
@@ -62,6 +64,7 @@ public class QuestTriggers {
     public static final Trigger<Integer> MONEY_SPENT_AT_SHOP = new Trigger<>(); //NOTE: This counts only money spent at shop and not money lost through events.
 
     public static final Trigger<AbstractRelic> OBTAIN_RELIC = new Trigger<>(); //NOTE: This is triggered by both obtain() and instantObtain().
+    public static final Trigger<AbstractRelic> EXACT_KILL = new Trigger<>();
 
     private static boolean disabled() {
         return CardCrawlGame.mode != CardCrawlGame.GameMode.GAMEPLAY;
@@ -411,6 +414,18 @@ public class QuestTriggers {
                 Matcher matcher = new Matcher.FieldAccessMatcher(AbstractPlayer.class, "relics");
                 return LineFinder.findInOrder(ctBehavior, matcher);
             }
+        }
+    }
+
+    @SpirePatch(
+            clz = AbstractMonster.class,
+            method = "damage"
+    )
+    public static class PerfectKillHook {
+        @SpireInsertPatch(rloc = 77)
+        public static void Insert(AbstractMonster __instance) {
+            if (__instance.currentHealth == 0)
+                EXACT_KILL.trigger();
         }
     }
 }
