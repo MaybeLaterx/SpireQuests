@@ -44,13 +44,9 @@ public class PerfectKillPatch {
         }
     }
      */
-    public static final Logger logger = Anniv8Mod.logger;
-
-    @SpireInsertPatch(rloc = 77, localvars={"damageAmount"})
-    public static void Insert(AbstractMonster __instance, int damageAmount) {
-        logger.error("damageAmount: " + damageAmount + ", currentHealth: " + __instance.currentHealth);
+    @SpireInsertPatch(rloc = 77)
+    public static void Insert(AbstractMonster __instance) {
         if (__instance.currentHealth == 0) {
-            CardCrawlGame.sound.play("SHOP_PURCHASE"); // remove
             for (AbstractRelic relic : AbstractDungeon.player.relics) {
                 if (relic instanceof BalancingStonesRelic) {
                     relic.onTrigger();
