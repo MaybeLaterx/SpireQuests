@@ -1,5 +1,8 @@
 package spireQuests.quests.maybelaterx.relics;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import spireQuests.abstracts.AbstractSQRelic;
 import spireQuests.util.Wiz;
 
@@ -8,15 +11,13 @@ import static spireQuests.Anniv8Mod.makeID;
 public class BalancingStonesRelic extends AbstractSQRelic {
 
     public static final String ID = makeID(BalancingStonesRelic.class.getSimpleName());
-    private static final int DRAW = 1;
     public BalancingStonesRelic() {
-        super(ID, "coda", RelicTier.SPECIAL, LandingSound.MAGICAL);
-    }
-/*
-    public void onTrigger() {
-        flash();
-        Wiz.p().draw(DRAW);
+        super(ID, "maybelaterx", RelicTier.SPECIAL, LandingSound.MAGICAL);
     }
 
- */
+    public void onTrigger() {
+        flash();
+        this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+        this.addToBot(new DrawCardAction(AbstractDungeon.player, 1));
+    }
 }
