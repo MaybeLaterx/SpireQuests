@@ -8,7 +8,7 @@ import spireQuests.quests.maybelaterx.relics.BalancingStonesRelic;
 public class CalculatedKillerQuest extends AbstractQuest {
 
     public CalculatedKillerQuest() {
-        super(QuestType.SHORT, QuestDifficulty.NORMAL);
+        super(QuestType.SHORT, QuestDifficulty.EASY);
         new TriggerTracker<>(QuestTriggers.EXACT_KILL, 3)
                 .add(this);
         addReward(new QuestReward.RelicReward(new BalancingStonesRelic()));

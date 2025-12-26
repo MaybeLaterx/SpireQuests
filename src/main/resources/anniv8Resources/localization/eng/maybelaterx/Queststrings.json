@@ -1,10 +1,10 @@
 {
   "${ModID}:CalculatedKillerQuest": {
     "TITLE": "Calculated Killer",
-    "DESCRIPTION": "Kill an enemy with exact damage #b3 times.",
+    "DESCRIPTION": "Kill a monster with exact damage #b3 times.",
     "AUTHOR": "MaybeLaterx",
     "TRACKER_TEXT": [
-      "Exact Kills"
+      "Exact kills"
     ]
   }
 }
