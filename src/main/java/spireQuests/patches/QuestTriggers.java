@@ -24,6 +24,7 @@ import com.megacrit.cardcrawl.rooms.ShopRoom;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import com.megacrit.cardcrawl.ui.panels.PotionPopUp;
 import com.megacrit.cardcrawl.ui.panels.TopPanel;
+import com.megacrit.cardcrawl.vfx.campfire.CampfireSmithEffect;
 import javassist.CtBehavior;
 import spireQuests.Anniv8Mod;
 import spireQuests.quests.Trigger;
@@ -62,6 +63,8 @@ public class QuestTriggers {
     public static final Trigger<Integer> MONEY_SPENT_AT_SHOP = new Trigger<>(); //NOTE: This counts only money spent at shop and not money lost through events.
 
     public static final Trigger<AbstractRelic> OBTAIN_RELIC = new Trigger<>(); //NOTE: This is triggered by both obtain() and instantObtain().
+    public static final Trigger<AbstractCard> UPGRADE_CARD = new Trigger<>(); //NOTE: Only triggers from smithing at the campfire.
+
 
     private static boolean disabled() {
         return CardCrawlGame.mode != CardCrawlGame.GameMode.GAMEPLAY;
@@ -426,6 +429,17 @@ public class QuestTriggers {
                 Matcher matcher = new Matcher.FieldAccessMatcher(AbstractPlayer.class, "relics");
                 return LineFinder.findInOrder(ctBehavior, matcher);
             }
+        }
+    }
+
+    @SpirePatch(
+            clz = CampfireSmithEffect.class,
+            method = "update"
+    )
+    public static class SmithCardHook {
+        @SpireInsertPatch(rloc = 13, localvars = {"c"})
+        public static void Insert(CampfireSmithEffect __instance, AbstractCard c) {
+            UPGRADE_CARD.trigger(c);
         }
     }
 }

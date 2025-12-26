@@ -1,0 +1,9 @@
+{
+  "${ModID}:TargetDummyRelic": {
+    "NAME": "Target Dummy",
+    "FLAVOR": "It's incredibly worn.",
+    "DESCRIPTIONS": [
+      "Your starter cards deal #b2 more damage and give #b2 more #yBlock."
+    ]
+  }
+}
