@@ -6,5 +6,13 @@
     "TRACKER_TEXT": [
       "Exact kills"
     ]
+  },
+  "${ModID}:HumbleSmithyQuest": {
+    "TITLE": "Humble Smithy",
+    "DESCRIPTION": "Upgrade #b3 more starter cards at campfires.",
+    "AUTHOR": "MaybeLaterx",
+    "TRACKER_TEXT": [
+      "Starter cards smithed"
+    ]
   }
 }
