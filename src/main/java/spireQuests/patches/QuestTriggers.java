@@ -415,16 +415,4 @@ public class QuestTriggers {
             }
         }
     }
-
-    @SpirePatch(
-            clz = AbstractMonster.class,
-            method = "damage"
-    )
-    public static class PerfectKillHook {
-        @SpireInsertPatch(rloc = 77)
-        public static void Insert(AbstractMonster __instance) {
-            if (__instance.currentHealth == 0)
-                EXACT_KILL.trigger();
-        }
-    }
 }
