@@ -26,7 +26,7 @@ public class HumbleSmithyQuest extends AbstractQuest {
         for (AbstractCard c : AbstractDungeon.player.masterDeck.group)
             if (c.rarity == AbstractCard.CardRarity.BASIC && !c.upgraded)
                 unupgradedStarterCards++;
-        if (unupgradedStarterCards >= 3)
+        if (unupgradedStarterCards < 3)
             return false;
 
         return true;
