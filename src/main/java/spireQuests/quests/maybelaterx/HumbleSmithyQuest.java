@@ -1,6 +1,7 @@
 package spireQuests.quests.maybelaterx;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import spireQuests.patches.QuestTriggers;
 import spireQuests.quests.AbstractQuest;
@@ -19,7 +20,7 @@ public class HumbleSmithyQuest extends AbstractQuest {
 
     @Override
     public boolean canSpawn() {
-        if (AbstractDungeon.floorNum > 33)
+        if (AbstractDungeon.floorNum > 33 && !Settings.isEndless)
             return false;
 
         int unupgradedStarterCards = 0;
