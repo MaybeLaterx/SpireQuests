@@ -5,11 +5,10 @@ import com.megacrit.cardcrawl.relics.MeatOnTheBone;
 import spireQuests.patches.QuestTriggers;
 import spireQuests.quests.AbstractQuest;
 import spireQuests.quests.QuestReward;
-import spireQuests.quests.maybelaterx.relics.BalancingStonesRelic;
 
-public class DeadMeatQuest extends AbstractQuest {
+public class AutotransfusionQuest extends AbstractQuest {
 
-    public DeadMeatQuest() {
+    public AutotransfusionQuest() {
         super(QuestType.LONG, QuestDifficulty.HARD);
         new TriggerTracker<>(QuestTriggers.VICTORY, 5)
                 .triggerCondition((x) -> ((float)AbstractDungeon.player.currentHealth / (float)AbstractDungeon.player.maxHealth) <= 0.25)

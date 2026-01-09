@@ -7,8 +7,8 @@
       "Exact kills"
     ]
   },
-  "${ModID}:DeadMeatQuest": {
-    "TITLE": "Dead Meat",
+  "${ModID}:AutotransfusionQuest": {
+    "TITLE": "Autotransfusion",
     "DESCRIPTION": "Finish combat with #b25% HP or less #b5 times.",
     "AUTHOR": "MaybeLaterx",
     "TRACKER_TEXT": [
